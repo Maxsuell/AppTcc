@@ -3,16 +3,19 @@ using System;
 using MarketAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MarketAPI.Data.migrations
+namespace MarketAPI.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240620004755_StorageAndServicesv3")]
+    partial class StorageAndServicesv3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
@@ -89,9 +92,6 @@ namespace MarketAPI.Data.migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("IdClient")
-                        .HasColumnType("INTEGER");
-
                     b.Property<float>("Price")
                         .HasColumnType("REAL");
 
@@ -99,8 +99,6 @@ namespace MarketAPI.Data.migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdClient");
 
                     b.ToTable("Services");
                 });
@@ -161,17 +159,6 @@ namespace MarketAPI.Data.migrations
                     b.HasOne("MarketAPI.Entities.Storage", null)
                         .WithMany("Produto")
                         .HasForeignKey("StorageId");
-                });
-
-            modelBuilder.Entity("MarketAPI.Entities.Services", b =>
-                {
-                    b.HasOne("MarketAPI.Entities.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("IdClient")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("MarketAPI.Entities.Storage", b =>

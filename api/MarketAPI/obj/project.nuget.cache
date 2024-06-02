@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7l5xEk25qQ/8FNb0fcASIqjIUVxiuHaIvg5C8VjUWo7XwANkDhRvTqtruS/n47gI8Ycg+RVtG1xzAbS1sEME/Q==",
+  "dgSpecHash": "h+l85nD9Q95DHtpVemGmFOZUTsBgfYA0qnmCViRwfiunexk8mUxd46l+kclKia7/TH+UxLpYKv1NANI+GCO8Iw==",
   "success": true,
   "projectFilePath": "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\marketapi\\MarketAPI.csproj",
   "expectedPackageFiles": [
@@ -22,8 +22,8 @@
     "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
-    "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
-    "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.dependencymodel\\7.0.0\\microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512",
     "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\maxsu\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",

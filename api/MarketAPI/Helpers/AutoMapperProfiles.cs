@@ -11,6 +11,12 @@ namespace MarketAPI.Helpers
             CreateMap<User,UserDtos>();
 
             CreateMap<Client,ClientDtos>();
+
+            CreateMap<Services,ServicesDtos>();
+
+            CreateMap<Storage,StorageDtos>();               
+
+            CreateMap<Produto,ProdutoDtos>();
                      
         }
     }

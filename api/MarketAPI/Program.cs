@@ -1,6 +1,7 @@
 using MarketAPI.Extensions;
 using MarketAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using MarketAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 var connString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -22,6 +23,8 @@ builder.Services.AddCors();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
