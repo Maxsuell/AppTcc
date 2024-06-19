@@ -1,0 +1,21 @@
+
+Estrutura Banco de dados
+
+Usuario
+    Nome
+    NomeUsuario
+    Email
+    Numero
+    DataNasc
+    CEP(CidadeEstadoPais)
+    SenhaHash
+    SenhaSalt
+
+Cliente
+    NomeEmpresa
+    Nome Fantasia
+    Email
+    Numero
+    CNPJ
+    Senhahash
+    SenhaSalt
