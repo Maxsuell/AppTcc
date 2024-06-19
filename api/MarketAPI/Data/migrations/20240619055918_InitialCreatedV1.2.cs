@@ -3,51 +3,51 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MarketAPI.data.migrations
+namespace MarketAPI.Data.migrations
 {
     /// <inheritdoc />
-    public partial class CriInicial : Migration
+    public partial class InitialCreatedV12 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Cliente",
+                name: "Client",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    NomeEmpresa = table.Column<string>(type: "TEXT", nullable: true),
-                    NomeFantasia = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    NameFantasy = table.Column<string>(type: "TEXT", nullable: true),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
-                    Numero = table.Column<string>(type: "TEXT", nullable: true),
+                    Number = table.Column<string>(type: "TEXT", nullable: true),
                     CNPJ = table.Column<int>(type: "INTEGER", nullable: false),
-                    SenhaHash = table.Column<string>(type: "TEXT", nullable: true),
-                    SenhaSalt = table.Column<string>(type: "TEXT", nullable: true)
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
+                    PasswordSalt = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cliente", x => x.Id);
+                    table.PrimaryKey("PK_Client", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Usuario",
+                name: "User",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(type: "TEXT", nullable: true),
-                    NomeUsuario = table.Column<string>(type: "TEXT", nullable: true),
+                    name = table.Column<string>(type: "TEXT", nullable: true),
+                    NameUser = table.Column<string>(type: "TEXT", nullable: true),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
-                    Numero = table.Column<string>(type: "TEXT", nullable: true),
-                    DataNasc = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Number = table.Column<string>(type: "TEXT", nullable: true),
+                    DateOfB = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CEP = table.Column<string>(type: "TEXT", nullable: true),
-                    SenhaHash = table.Column<string>(type: "TEXT", nullable: true),
-                    SenhaSalt = table.Column<string>(type: "TEXT", nullable: true)
+                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
+                    PasswordSalt = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuario", x => x.Id);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
         }
 
@@ -55,10 +55,10 @@ namespace MarketAPI.data.migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cliente");
+                name: "Client");
 
             migrationBuilder.DropTable(
-                name: "Usuario");
+                name: "User");
         }
     }
 }

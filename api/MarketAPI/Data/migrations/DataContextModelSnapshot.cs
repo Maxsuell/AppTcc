@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MarketAPI.data.migrations
+namespace MarketAPI.Data.migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -17,7 +17,7 @@ namespace MarketAPI.data.migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.5");
 
-            modelBuilder.Entity("MarketAPI.Entities.Cliente", b =>
+            modelBuilder.Entity("MarketAPI.Entities.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,27 +29,27 @@ namespace MarketAPI.data.migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NomeEmpresa")
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NomeFantasia")
+                    b.Property<string>("NameFantasy")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Numero")
+                    b.Property<string>("Number")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SenhaHash")
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SenhaSalt")
+                    b.Property<string>("PasswordSalt")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cliente");
+                    b.ToTable("Client");
                 });
 
-            modelBuilder.Entity("MarketAPI.Entities.Usuario", b =>
+            modelBuilder.Entity("MarketAPI.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,30 +58,30 @@ namespace MarketAPI.data.migrations
                     b.Property<string>("CEP")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DataNasc")
+                    b.Property<DateTime>("DateOfB")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("NameUser")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NomeUsuario")
+                    b.Property<string>("Number")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Numero")
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SenhaHash")
+                    b.Property<string>("PasswordSalt")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SenhaSalt")
+                    b.Property<string>("name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuario");
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

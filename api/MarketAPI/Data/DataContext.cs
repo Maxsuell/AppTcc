@@ -7,13 +7,11 @@ namespace MarketAPI.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions options): base(options)
-        {            
-        }
+        public DataContext(DbContextOptions options): base(options){}
 
-        public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<User> User { get; set; }
 
-        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Client> Client { get; set; }
 
 
     }
