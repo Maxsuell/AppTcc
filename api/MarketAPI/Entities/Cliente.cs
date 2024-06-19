@@ -2,6 +2,7 @@ namespace MarketAPI.Entities
 {
     public class Cliente
     {
+        public int Id { get; set; }
         public string NomeEmpresa { get; set; }
         public string NomeFantasia { get; set; }
         public string Email { get; set; }

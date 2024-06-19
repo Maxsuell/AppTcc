@@ -2,6 +2,7 @@
 Estrutura Banco de dados
 
 Usuario
+    IdUser
     Nome
     NomeUsuario
     Email
@@ -12,6 +13,7 @@ Usuario
     SenhaSalt
 
 Cliente
+    IdCliente
     NomeEmpresa
     Nome Fantasia
     Email
