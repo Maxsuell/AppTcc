@@ -10,48 +10,48 @@ namespace MarketAPI.Data
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-        
+
         public UserRepository(DataContext context,IMapper mapper)
         {
             _mapper = mapper;
             _context = context;
-            
-        }
-        
-        public void AddUser(User user)
-        {
-            _context.User.Add(user);
+
         }
 
-        
+        public void AddUser(AppUser user)
+        {
+            _context.Users.Add(user);
+        }
+
+
 
         public async Task<IEnumerable<UserDtos>> GetUsers()
         {
-            return await _context.User.ProjectTo<UserDtos>(_mapper.ConfigurationProvider).ToListAsync();
+            return await _context.Users.ProjectTo<UserDtos>(_mapper.ConfigurationProvider).ToListAsync();
         }
 
-        public IEnumerable<UserDtos> GetUserName(string name)
+        public AppUser GetUserName(string name)
         {
-            return  _context.User.ProjectTo<UserDtos>(_mapper.ConfigurationProvider).Where(us => us.NameUser == name);
+            return  _context.Users.Where(us => us.UserName == name).Include(x => x.UserRoles).ThenInclude(x => x.Role).FirstOrDefault();
         }
 
         public async Task<UserDtos> GetUserId(int id)
         {
-            var user = await _context.User.FirstOrDefaultAsync(user => user.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(user => user.Id == id);
 
             var userMap = _mapper.Map<UserDtos>(user);
 
-            
+
 
             return userMap;
         }
 
         public void DeleteUser(int Id)
         {
-            var obj = _context.User.Find(Id);
-            _context.User.Remove(obj);
-            
+            var obj = _context.Users.Find(Id);
+            _context.Users.Remove(obj);
+
         }
-    
+
     }
 }

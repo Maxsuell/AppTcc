@@ -2,7 +2,7 @@ namespace MarketAPI.DTOs
 {
     public class ProdutoDtos
     {
-        public int Id { get; set; }
+        public int IdProduto { get; set; }
         public string NameProduto { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

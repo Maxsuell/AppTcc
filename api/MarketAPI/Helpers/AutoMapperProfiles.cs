@@ -8,14 +8,18 @@ namespace MarketAPI.Helpers
     {
         public AutoMapperProfiles()
         {   
-            CreateMap<User,UserDtos>();
+            CreateMap<AppUser,UserDtos>();
+            CreateMap<AppUser,RegisterDtos>();
+            CreateMap<RegisterDtos,AppUser>();
+            
 
-            CreateMap<Client,ClientDtos>();
+            CreateMap<AppUserRoles,ClientDtos>();
+            CreateMap<ClientDtos,AppUserRoles>();
 
             CreateMap<Services,ServicesDtos>();
 
             CreateMap<Storage,StorageDtos>();               
-
+            CreateMap<StorageDtos,Storage>();               
             CreateMap<Produto,ProdutoDtos>();
                      
         }

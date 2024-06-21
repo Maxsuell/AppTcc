@@ -1,4 +1,5 @@
 using AutoMapper;
+using MarketAPI.Entities;
 
 namespace MarketAPI.Data
 {
@@ -16,6 +17,11 @@ namespace MarketAPI.Data
         public UserRepository userRepository => new UserRepository(_context, _mapper);
 
         public ClientRepository clientRepository => new ClientRepository(_context,_mapper);
+
+        public StorageRepository storageRepository => new StorageRepository(_context,_mapper);
+
+        public ServicesRepository servicesRepository => new ServicesRepository(_context,_mapper);
+
 
 
         public async Task<bool> Complete()

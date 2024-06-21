@@ -1,10 +1,18 @@
+
+using System.ComponentModel.DataAnnotations;
+
+
 namespace MarketAPI.Entities
 {
     public class Storage
     {
-        public int Id { get; set; }
-        public Client Client { get; set; }
+        [Key]
+        public int IdStorage { get; set; }
+
         public int IdClient { get; set; }
+    
+        public AppUserRoles Client { get; set; }
+        
         public ICollection<Produto> Produto { get; set; }
         
         

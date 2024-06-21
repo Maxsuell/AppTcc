@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MarketAPI.Data.Migrations
+namespace MarketAPI.Data.migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240620012753_StorageAndServicesv4")]
-    partial class StorageAndServicesv4
+    [Migration("20240621165125_StorageAndServicesv7.3")]
+    partial class StorageAndServicesv73
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,7 +22,7 @@ namespace MarketAPI.Data.Migrations
 
             modelBuilder.Entity("MarketAPI.Entities.Client", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdClient")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -31,6 +31,9 @@ namespace MarketAPI.Data.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("IdStorage")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
@@ -47,19 +50,25 @@ namespace MarketAPI.Data.Migrations
                     b.Property<string>("PasswordSalt")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdClient");
+
+                    b.HasIndex("IdStorage")
+                        .IsUnique();
 
                     b.ToTable("Client");
                 });
 
             modelBuilder.Entity("MarketAPI.Entities.Produto", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdProduto")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("IdStorage")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("NameProduto")
                         .HasColumnType("TEXT");
@@ -70,23 +79,23 @@ namespace MarketAPI.Data.Migrations
                     b.Property<int>("Qnt")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("StorageId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdProduto");
 
-                    b.HasIndex("StorageId");
+                    b.HasIndex("IdStorage");
 
                     b.ToTable("Produto");
                 });
 
             modelBuilder.Entity("MarketAPI.Entities.Services", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdServices")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ClientIdClient")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -101,32 +110,30 @@ namespace MarketAPI.Data.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdServices");
 
-                    b.HasIndex("IdClient");
+                    b.HasIndex("ClientIdClient");
 
                     b.ToTable("Services");
                 });
 
             modelBuilder.Entity("MarketAPI.Entities.Storage", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdStorage")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("IdClient")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdClient");
+                    b.HasKey("IdStorage");
 
                     b.ToTable("Storage");
                 });
 
             modelBuilder.Entity("MarketAPI.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdUser")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -154,42 +161,45 @@ namespace MarketAPI.Data.Migrations
                     b.Property<string>("name")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("IdUser");
 
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("MarketAPI.Entities.Client", b =>
+                {
+                    b.HasOne("MarketAPI.Entities.Storage", "Storage")
+                        .WithOne("Client")
+                        .HasForeignKey("MarketAPI.Entities.Client", "IdStorage")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Storage");
+                });
+
             modelBuilder.Entity("MarketAPI.Entities.Produto", b =>
                 {
-                    b.HasOne("MarketAPI.Entities.Storage", null)
+                    b.HasOne("MarketAPI.Entities.Storage", "Storage")
                         .WithMany("Produto")
-                        .HasForeignKey("StorageId");
+                        .HasForeignKey("IdStorage")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Storage");
                 });
 
             modelBuilder.Entity("MarketAPI.Entities.Services", b =>
                 {
                     b.HasOne("MarketAPI.Entities.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("IdClient")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientIdClient");
 
                     b.Navigation("Client");
                 });
 
             modelBuilder.Entity("MarketAPI.Entities.Storage", b =>
                 {
-                    b.HasOne("MarketAPI.Entities.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("IdClient")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Client");
-                });
 
-            modelBuilder.Entity("MarketAPI.Entities.Storage", b =>
-                {
                     b.Navigation("Produto");
                 });
 #pragma warning restore 612, 618

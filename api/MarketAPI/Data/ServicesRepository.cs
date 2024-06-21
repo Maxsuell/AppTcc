@@ -35,7 +35,7 @@ namespace MarketAPI.Data
         public void DeleteServices(int id)
         {
             var obj = _context.Services.Find(id);
-            _context.service.Remove(obj);
+            _context.Services.Remove(obj);
         }
     }
 }

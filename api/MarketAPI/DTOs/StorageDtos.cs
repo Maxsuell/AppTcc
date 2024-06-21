@@ -2,10 +2,11 @@ namespace MarketAPI.DTOs
 {
     public class StorageDtos
     {
-        public int Id { get; set; }
+        public int IdStorage { get; set; }
+        public int IdClient { get; set; }
     
         public ICollection<ProdutoDtos> Produto { get; set; }
         
-        
+        public ClientDtos ClientDtos { get; set; }
     }
 }

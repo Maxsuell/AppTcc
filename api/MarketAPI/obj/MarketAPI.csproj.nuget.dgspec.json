@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\marketapi\\MarketAPI.csproj": {}
+    "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\MarketAPI\\MarketAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\marketapi\\MarketAPI.csproj": {
+    "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\MarketAPI\\MarketAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\marketapi\\MarketAPI.csproj",
+        "projectUniqueName": "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\MarketAPI\\MarketAPI.csproj",
         "projectName": "MarketAPI",
-        "projectPath": "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\marketapi\\MarketAPI.csproj",
+        "projectPath": "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\MarketAPI\\MarketAPI.csproj",
         "packagesPath": "C:\\Users\\maxsu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\marketapi\\obj\\",
+        "outputPath": "C:\\Users\\maxsu\\Documents\\Trabalhos\\Word\\TCC\\AppTcc\\api\\MarketAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maxsu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -48,6 +48,14 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.20, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.20, )"
@@ -79,6 +87,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.25.0, )"
             }
           },
           "imports": [

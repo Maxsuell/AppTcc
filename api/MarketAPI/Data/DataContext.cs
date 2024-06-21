@@ -1,18 +1,18 @@
 using MarketAPI.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
 
 namespace MarketAPI.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<AppUser, AppRole, int,
+      IdentityUserClaim<int>,AppUserRoles,
+       IdentityUserLogin<int>, IdentityRoleClaim<int>,
+        IdentityUserToken<int>>
     {
         public DataContext(DbContextOptions options): base(options){}
-
-        public DbSet<User> User { get; set; }
-
-        public DbSet<Client> Client { get; set; }
-
         public DbSet<Produto> Produto {get; set;}
 
         public DbSet<Services> Services { get; set; }
@@ -22,19 +22,37 @@ namespace MarketAPI.Data
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        base.OnModelCreating(builder);
+       
+
+        builder.Entity<Storage>()
+                .HasMany(s => s.Produto)
+                .WithOne(p => p.Storage)
+                .HasForeignKey(p => p.IdStorage)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
         builder.Entity<Storage>()
             .HasOne(s => s.Client)
-            .WithMany()
-            .HasForeignKey(st => st.IdClient)
+            .WithOne(c => c.Storage)
+            .HasForeignKey<AppUserRoles>(c => c.IdStorage)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.Entity<Services>()
-            .HasOne(s => s.Client)
-            .WithMany()
-            .HasForeignKey(st => st.IdClient)
-            .OnDelete(DeleteBehavior.Cascade);
+        builder.Entity<AppUser>()
+            .HasMany(ur => ur.UserRoles)
+            .WithOne(u => u.User)
+            .HasForeignKey(u => u.UserId)
+            .IsRequired();
+
+        builder.Entity<AppRole>()
+            .HasMany(ur => ur.UserRoles)
+            .WithOne(u => u.Role)
+            .HasForeignKey(u => u.RoleId)
+            .IsRequired();
+            
+
+
+            
+         base.OnModelCreating(builder);    
     }
 
     }

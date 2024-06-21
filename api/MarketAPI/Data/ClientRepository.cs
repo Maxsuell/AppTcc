@@ -4,52 +4,41 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace MarketAPI.Data
 {
     public class ClientRepository
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-        
+
         public ClientRepository(DataContext context,IMapper mapper)
         {
             _mapper = mapper;
             _context = context;
-            
-        }
-        
-        public void AddClient(Client client)
-        {
-            _context.Client.Add(client);
+
         }
 
-        
+        public void AddClient(AppUserRoles client)
+        {
+            _context.UserRoles.Add(client);
+               
+        }
 
         public async Task<IEnumerable<ClientDtos>> GetClients()
         {
-            return await _context.Client.ProjectTo<ClientDtos>(_mapper.ConfigurationProvider).ToListAsync();
+            return await _context.UserRoles.ProjectTo<ClientDtos>(_mapper.ConfigurationProvider).ToListAsync();
         }
 
         public IEnumerable<ClientDtos> GetClientByName(string name)
         {
-            return  _context.Client.ProjectTo<ClientDtos>(_mapper.ConfigurationProvider).Where(cl => cl.Name == name);
+            return  _context.UserRoles.ProjectTo<ClientDtos>(_mapper.ConfigurationProvider).Where(cl => cl.UserName == name);
         }
 
-        public async Task<ClientDtos> GetClientId(int id)
+        public void DeleteClient(AppUserRoles UserRole)
         {
-            var client = await _context.Client.FirstOrDefaultAsync(client => client.Id == id);
-
-            var clientMap = _mapper.Map<ClientDtos>(client);
-
-            return clientMap;
+            _context.UserRoles.Remove(UserRole);
         }
 
-        public void DeleteClient(int Id)
-        {
-            var obj = _context.Client.Find(Id);
-            _context.Client.Remove(obj);
-            
-        }
-    
     }
 }
